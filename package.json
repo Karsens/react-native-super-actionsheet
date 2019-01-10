@@ -1,0 +1,15 @@
+{
+  "name": "super-action-sheet",
+  "version": "1.0.0",
+  "main": "index.tsx",
+  "repository": "https://github.com/EAT-CODE-KITE-REPEAT/react-native-super-actionsheet",
+  "author": "Wijnand Karsens <wijnandworld@hotmail.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^16.7.0",
+    "react-native": "^0.57.8"
+  },
+  "dependencies": {
+    "react-native-actionsheet": "^2.4.2"
+  }
+}
