@@ -1,7 +1,7 @@
 import React from "react";
 import ActionSheet from "react-native-actionsheet";
 
-type Option = {
+export type Option = {
   index: number;
   title: string;
   destructive?: boolean | undefined;
