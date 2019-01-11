@@ -14,11 +14,11 @@ type Props = {
   reference: any;
 };
 
-class SuperActionSheet<Props> extends React.Component {
+class SuperActionSheet extends React.Component<Props> {
   render() {
-    const { data, reference }: { data: Option[]; ref: any } = this.props;
+    const { data, reference } = this.props;
 
-    const otherProps = this.props;
+    const otherProps: Props = this.props;
     delete otherProps.data, otherProps.ref;
 
     const destructive = data && (data.find(o => o.destructive) || {}).index;
