@@ -1,5 +1,6 @@
 import React from "react";
 import ActionSheet from "react-native-actionsheet";
+import { Text } from "react-native";
 
 export type Option = {
   index: number;
@@ -25,7 +26,7 @@ class SuperActionSheet extends React.Component<Props> {
     const cancel = data && (data.find(o => o.cancel) || {}).index;
     const titles = data && data.map(o => o.title);
 
-    return (
+    return titles ? (
       <ActionSheet
         ref={r => reference(r)}
         options={titles}
@@ -38,7 +39,7 @@ class SuperActionSheet extends React.Component<Props> {
         }}
         {...otherProps}
       />
-    );
+    ): <Text>Problem with actionsheet...</Text>;
   }
 }
 
