@@ -1,7 +1,13 @@
 import React from "react";
 import ActionSheet from "react-native-actionsheet";
-// import { Text } from "react-native";
+import { Keyboard } from "react-native";
 
+/**
+ * #todo
+ * https://github.com/expo/react-native-action-sheet is probably more intuitive and easy to use. Therefore, I should migrate to this one from now on.
+ *
+ *
+ */
 export type Option = {
   index: number;
   title: string;
@@ -11,13 +17,14 @@ export type Option = {
 };
 
 type Props = {
+  dismissKeyboardWhenDone: boolean;
   data: Option[];
   reference: any;
 };
 
 class SuperActionSheet extends React.Component<Props> {
   render() {
-    const { data, reference } = this.props;
+    const { data, reference, dismissKeyboardWhenDone } = this.props;
 
     const otherProps: Props = this.props;
     delete otherProps.data, otherProps.ref;
@@ -33,13 +40,16 @@ class SuperActionSheet extends React.Component<Props> {
         cancelButtonIndex={cancel}
         destructiveButtonIndex={destructive}
         onPress={(index: number) => {
+          if (dismissKeyboardWhenDone) {
+            Keyboard.dismiss();
+          }
           if (data[index].onPress) {
             data[index].onPress();
           }
         }}
         {...otherProps}
       />
-    ) : null;// <Text>Problem with actionsheet...</Text>;
+    ) : null; // <Text>Problem with actionsheet...</Text>;
   }
 }
 
